@@ -3,7 +3,7 @@ $(window).load(function(){
 })
 
 $(document).ready(function() {
-
+  $('#menu').slicknav();
   // Wjezdzanie napisow bo zaladowaniu strony
   $( "#landing-page-content" ).animate({ left:0 }, 500);
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     email = $('input[name=email]').val();
     walidacja_email = re.test(email);
-    if($('input[name=name]').val() !='' && walidacja_email == true && $('input[name=tresc]').val()!=''){
+    if($('input[name=name]').val() && walidacja_email == true && $('textarea[name=tresc]').val()){
       event.preventDefault();
       showConfirm();
     }
@@ -131,7 +131,7 @@ function setMovePosition() {
 function showConfirm(){
   $.ajax({
         type     : "POST",
-        url      : "http://michalwielgus.site88.net/webwarriors.pl/mail.php",
+        url      : "http://webwarriors.pl/mail.php",
         data     : {
           name : $('input[name=name]').val(),
           email : $('input[name=email]').val(),
